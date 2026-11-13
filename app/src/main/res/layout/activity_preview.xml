@@ -18,19 +18,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/ivPreviewImage"
+    <FrameLayout
+        android:id="@+id/previewImageContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/spacing_md"
-        android:layout_marginBottom="@dimen/spacing_md"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:layout_marginBottom="@dimen/spacing_xs"
         android:background="@color/surface_gray"
-        android:contentDescription="@string/preview_title"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@id/tvLanguageLabel"
+        app:layout_constraintBottom_toTopOf="@id/previewCropActions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPreviewTitle" />
+        app:layout_constraintTop_toBottomOf="@id/tvPreviewTitle">
+
+        <ImageView
+            android:id="@+id/ivPreviewImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/preview_title"
+            android:scaleType="fitCenter" />
+
+        <com.example.offlinetextscanner.ui.CropOverlayView
+            android:id="@+id/cropOverlayView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/crop_adjust_description" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/previewCropActions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/enhancementRow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnResetCrop"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/reset_crop"
+            android:textAllCaps="false" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBeforeAfter"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/show_original"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/enhancementRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/tvLanguageLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enhancement_label"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spEnhancementMode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_sm"
+            android:layout_weight="1"
+            android:entries="@array/enhancement_modes" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvLanguageLabel"
@@ -48,40 +115,33 @@
         android:id="@+id/rgLanguageMode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/cbEnablePreprocessing"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/previewButtonsRow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <RadioButton
             android:id="@+id/rbLangMixed"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:checked="true"
-            android:text="@string/lang_eng_ara" />
+            android:text="@string/lang_mixed_short" />
+
         <RadioButton
             android:id="@+id/rbLangEng"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/lang_eng" />
+            android:layout_weight="1"
+            android:text="@string/lang_eng_short" />
+
         <RadioButton
             android:id="@+id/rbLangAra"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/lang_ara" />
+            android:layout_weight="1"
+            android:text="@string/lang_ara_short" />
     </RadioGroup>
-
-    <CheckBox
-        android:id="@+id/cbEnablePreprocessing"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_sm"
-        android:checked="true"
-        android:text="@string/checkbox_preprocess"
-        android:textColor="@color/text_secondary"
-        app:layout_constraintBottom_toTopOf="@id/previewButtonsRow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/previewButtonsRow"
@@ -104,6 +164,7 @@
             android:textColor="@color/primary_blue"
             app:cornerRadius="@dimen/button_corner_radius"
             app:strokeColor="@color/primary_blue" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnConfirmOcr"
             android:layout_width="0dp"
@@ -136,6 +197,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
         <TextView
             android:id="@+id/tvProcessingStatus"
             android:layout_width="wrap_content"

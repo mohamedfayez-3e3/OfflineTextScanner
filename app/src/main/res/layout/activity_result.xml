@@ -29,12 +29,108 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvResultTitle" />
 
+    <LinearLayout
+        android:id="@+id/resultModeRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvConfidenceMeta">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnModeImage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/mode_image"
+            android:textAllCaps="false" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnModeText"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/mode_text"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/imageModeContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:background="@color/surface_gray"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/selectionControlsRow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resultModeRow">
+
+        <com.example.offlinetextscanner.ui.TextOverlayView
+            android:id="@+id/textOverlayView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/image_selection_content_description" />
+
+        <TextView
+            android:id="@+id/tvNoImageSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="@dimen/spacing_lg"
+            android:text="@string/no_image_selection"
+            android:textColor="@color/text_secondary"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/selectionControlsRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/resultActionRow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSelectAllWords"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/select_all"
+            android:textAllCaps="false" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClearSelection"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/clear_selection"
+            android:textAllCaps="false" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCopySelected"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/copy_selection"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
     <EditText
         android:id="@+id/etExtractedText"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/spacing_md"
-        android:layout_marginBottom="@dimen/spacing_md"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:layout_marginBottom="@dimen/spacing_sm"
         android:background="@color/surface_gray"
         android:gravity="top|start"
         android:hint="@string/result_hint"
@@ -51,7 +147,7 @@
         app:layout_constraintBottom_toTopOf="@id/resultActionRow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvConfidenceMeta" />
+        app:layout_constraintTop_toBottomOf="@id/resultModeRow" />
 
     <LinearLayout
         android:id="@+id/resultActionRow"
@@ -74,6 +170,7 @@
             android:textColor="@color/background_white"
             app:backgroundTint="@color/primary_blue"
             app:cornerRadius="@dimen/button_corner_radius" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnShareText"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"

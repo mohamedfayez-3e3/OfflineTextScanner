@@ -11,6 +11,14 @@
     <string name="camera_close">Close</string>
     <string name="camera_initializing">Initializing camera preview…</string>
     <string name="preview_title">Verify Document Image</string>
+    <string name="crop_adjust_description">Drag the four corner handles to adjust the document crop.</string>
+    <string name="reset_crop">Reset Corners</string>
+    <string name="show_original">Compare Original</string>
+    <string name="show_enhanced">Show Enhanced</string>
+    <string name="enhancement_label">Enhancement:</string>
+    <string name="lang_mixed_short">Mixed</string>
+    <string name="lang_eng_short">English</string>
+    <string name="lang_ara_short">Arabic</string>
     <string name="language_label">OCR Language Mode:</string>
     <string name="lang_eng_ara">Arabic + English (Mixed)</string>
     <string name="lang_eng">English Only (eng)</string>
@@ -21,6 +29,14 @@
     <string name="processing_ocr">Preprocessing image with OpenCV &amp; running local Tesseract OCR…</string>
     <string name="result_title">Extracted Text</string>
     <string name="result_hint">Extracted text will appear here. You can edit or select any portion.</string>
+    <string name="mode_image">Image Selection</string>
+    <string name="mode_text">Editable Text</string>
+    <string name="image_selection_content_description">Scanned document with selectable OCR word regions</string>
+    <string name="no_image_selection">Word positions are unavailable for this scan. Use Editable Text mode.</string>
+    <string name="select_all">Select All</string>
+    <string name="clear_selection">Clear</string>
+    <string name="copy_selection">Copy Selection</string>
+    <string name="no_selection_to_copy">Select text or words before copying.</string>
     <string name="result_metadata">Language: %1$s • Mean Confidence: %2$d%%</string>
     <string name="btn_copy_all">Copy All</string>
     <string name="btn_share">Share Text</string>
@@ -39,4 +55,12 @@
     <string name="err_empty_ocr_result">No readable text was detected in the image. Try retaking with clearer lighting.</string>
     <string name="err_clipboard_failed">Unable to copy text to the Android clipboard.</string>
     <string name="err_insufficient_storage">Insufficient local storage to save temporary image or OCR language data.</string>
+    <string-array name="enhancement_modes">
+        <item>Original Color</item>
+        <item>Grayscale</item>
+        <item>Black and White</item>
+        <item>Adaptive Threshold</item>
+        <item>Enhanced Contrast</item>
+        <item>Document Cleanup</item>
+    </string-array>
 </resources>

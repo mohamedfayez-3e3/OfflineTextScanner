@@ -1,8 +1,8 @@
 # Offline Text Scanner
 
-An Android document scanner that extracts Arabic and English text entirely on
-device. Camera capture, image preprocessing, and OCR run locally; the app does
-not request Internet access or call a remote service.
+OfflineTextScanner is a Kotlin/XML Android app for capturing or importing
+documents and recognizing Arabic and English text locally. It uses CameraX,
+OpenCV, and Tesseract4Android; scanning and OCR do not call remote services.
 
 ## Requirements
 
@@ -30,12 +30,30 @@ use. No language data is downloaded by the app. English (`eng`), Arabic
 from the official [tessdata_fast](https://github.com/tesseract-ocr/tessdata_fast)
 repository; its Apache License 2.0 is included alongside the model files.
 
+## Scanner features
+
+- Live CameraX preview with document-boundary overlay, stable-frame auto-capture,
+  manual capture, flash control, and a gallery shortcut.
+- OpenCV quadrilateral detection, draggable crop corners, perspective correction,
+  and a full-image fallback when detection is unavailable.
+- Six non-destructive image modes: Original Color, Grayscale, Black and White,
+  Adaptive Threshold, Enhanced Contrast, and Document Cleanup.
+- On-device Tesseract modes for Arabic, English, or both. OCR results include
+  word/line/block boxes when Tesseract returns iterator data.
+- Image selection mode supports word taps, line double-taps, block long-press,
+  drag selection, pinch zoom, and pan. Editable text mode supports editing,
+  copy, and Android Sharesheet sharing.
+
+The original captured/imported file is retained in the app cache and is not
+overwritten by perspective correction or enhancement. Preview and OCR bitmaps
+are bounded in size to limit memory use.
+
 ## Build
 
 From the project directory:
 
 ```shell
-./gradlew clean assembleDebug
+./gradlew clean test assembleDebug assembleRelease
 ```
 
 On Windows PowerShell:
@@ -44,33 +62,31 @@ On Windows PowerShell:
 .\gradlew.bat clean assembleDebug
 ```
 
-The debug APK is written to
-`app/build/outputs/apk/debug/app-debug.apk`. Install it on a connected device
-with `adb install -r app/build/outputs/apk/debug/app-debug.apk`.
+ABI splits are enabled without a universal APK. For most current Android phones
+using 64-bit ARM, install `app/build/outputs/apk/debug/app-arm64-v8a-debug.apk`.
+Use the APK matching the device ABI; debug and release APKs are emitted under
+`app/build/outputs/apk/debug/` and `app/build/outputs/apk/release/`.
 
 ## App flow
 
-1. Capture a document with CameraX or choose an image using the Android Photo
-   Picker.
-2. Confirm the image, select Arabic, English, or mixed OCR, and optionally
-   enable local OpenCV grayscale, CLAHE, Gaussian denoising, and adaptive
-   thresholding.
-3. Review and edit the recognized text, copy it to the clipboard, or share it
-   through the Android Sharesheet.
-
-The original scan is not modified. Images are orientation-corrected and scaled
-for OCR; if OpenCV cannot initialize or process an image, OCR falls back to the
-normalized original.
+1. Capture with the live scanner or select an image using Android Photo Picker.
+2. Adjust the document corners, compare the original with an enhancement, and
+   choose the OCR language.
+3. Select recognized text on the scanned image or switch to editable text mode.
+   Copy or share the selection or full text.
 
 ## Privacy and permissions
 
-The app only requests the Camera permission when camera scanning is selected.
-Gallery selection uses the Photo Picker and does not request storage
-permissions. The manifest contains no `INTERNET` permission. Camera, image
-processing, and OCR are performed on-device.
+Arabic and English Tesseract models are bundled under
+`app/src/main/assets/tessdata/` and copied to private app storage when needed.
+The app only requests Camera permission when camera scanning is selected;
+Photo Picker import does not require storage permission. The app manifest has
+no `INTERNET` permission. Runtime OCR and image processing are local.
 
 ## Device verification
 
-Test camera permission grant/denial, camera capture, Photo Picker import,
-portrait and rotated images, all three OCR language modes, OpenCV fallback,
-text editing, clipboard copy, and sharing on a physical Android device.
+Automation can verify geometry, OCR structure assembly, coordinate transforms,
+and capture-stability logic. Live camera behavior, actual Arabic/English OCR
+quality, touch gestures, airplane-mode installation, and release behavior still
+require emulator or physical-device verification; this repository does not
+claim those checks have already been performed.

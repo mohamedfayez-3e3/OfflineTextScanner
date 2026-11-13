@@ -14,6 +14,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.example.offlinetextscanner.ui.DocumentOverlayView
+        android:id="@+id/documentOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="false"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toTopOf="@id/cameraControlsContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ProgressBar
         android:id="@+id/cameraProgressBar"
         android:layout_width="wrap_content"
@@ -31,7 +42,7 @@
         android:background="@color/black_overlay"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="@dimen/spacing_lg"
+        android:padding="@dimen/spacing_sm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -49,9 +60,35 @@
             app:strokeColor="@color/background_white" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCaptureImage"
-            android:layout_width="0dp"
+            android:id="@+id/btnFlash"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height"
+            android:layout_marginEnd="@dimen/spacing_sm"
+            android:enabled="false"
+            android:text="Flash off"
+            android:textAllCaps="false"
+            android:textColor="@color/background_white"
+            app:cornerRadius="@dimen/button_corner_radius"
+            app:strokeColor="@color/background_white" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGallery"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginEnd="@dimen/spacing_sm"
+            android:text="Gallery"
+            android:textAllCaps="false"
+            android:textColor="@color/background_white"
+            app:cornerRadius="@dimen/button_corner_radius"
+            app:strokeColor="@color/background_white" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCaptureImage"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:minWidth="0dp"
             android:layout_weight="1"
             android:text="@string/camera_capture"
             android:textAllCaps="false"

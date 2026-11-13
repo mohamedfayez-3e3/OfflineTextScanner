@@ -4,7 +4,8 @@ sealed class OCRResult {
     data class Success(
         val extractedText: String,
         val meanConfidence: Int,
-        val languageCode: String
+        val languageCode: String,
+        val structuredPage: StructuredOCRPage
     ) : OCRResult()
 
     data class Error(
