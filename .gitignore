@@ -1,5 +1,13 @@
 .gradle/
-**/build/
 local.properties
 .idea/
 *.iml
+
+# Android generated files
+.gradle/
+**/build/
+local.properties
+*.apk
+*.aab
+.externalNativeBuild/
+.cxx/
