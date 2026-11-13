@@ -1,0 +1,3 @@
+-keep class com.googlecode.tesseract.android.** { *; }
+-keep class org.opencv.** { *; }
+-dontwarn org.opencv.**

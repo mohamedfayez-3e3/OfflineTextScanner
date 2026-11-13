@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Offline Text Scanner</string>
+    <string name="app_description">Scan printed documents with your camera or pick an image from your gallery to extract Arabic and English text 100% offline on your device.</string>
+    <string name="offline_badge_text">100% Offline • Local Tesseract OCR (Arabic &amp; English)</string>
+    <string name="btn_scan_camera">Scan with Camera</string>
+    <string name="btn_import_gallery">Import from Gallery</string>
+    <string name="empty_state_title">No Document Scanned Yet</string>
+    <string name="empty_state_subtitle">Capture a page with your camera or select an image from your gallery above to extract editable text locally.</string>
+    <string name="camera_capture">Capture Document</string>
+    <string name="camera_close">Close</string>
+    <string name="camera_initializing">Initializing camera preview…</string>
+    <string name="preview_title">Verify Document Image</string>
+    <string name="language_label">OCR Language Mode:</string>
+    <string name="lang_eng_ara">Arabic + English (Mixed)</string>
+    <string name="lang_eng">English Only (eng)</string>
+    <string name="lang_ara">Arabic Only (ara)</string>
+    <string name="checkbox_preprocess">Enhance image with OpenCV before OCR</string>
+    <string name="btn_retake">Retake / Reselect</string>
+    <string name="btn_confirm_ocr">Confirm &amp; Extract Text</string>
+    <string name="processing_ocr">Preprocessing image with OpenCV &amp; running local Tesseract OCR…</string>
+    <string name="result_title">Extracted Text</string>
+    <string name="result_hint">Extracted text will appear here. You can edit or select any portion.</string>
+    <string name="result_metadata">Language: %1$s • Mean Confidence: %2$d%%</string>
+    <string name="btn_copy_all">Copy All</string>
+    <string name="btn_share">Share Text</string>
+    <string name="btn_scan_another">Scan Another Document</string>
+    <string name="text_copied_toast">Text copied to clipboard</string>
+    <string name="share_chooser_title">Share Extracted Text</string>
+    <string name="err_camera_permission_denied">Camera permission is required to scan documents. Please grant permission in Settings.</string>
+    <string name="err_camera_unavailable">Camera hardware is unavailable or could not be initialized on this device.</string>
+    <string name="err_gallery_canceled">Image selection was canceled.</string>
+    <string name="err_invalid_image">The selected image file is invalid or could not be opened.</string>
+    <string name="err_image_decode">Failed to decode bitmap from the provided image file.</string>
+    <string name="err_ocr_init">Failed to initialize local Tesseract OCR engine.</string>
+    <string name="err_missing_tessdata">Missing OCR language files (%1$s) in assets/tessdata/. Please bundle eng.traineddata and ara.traineddata.</string>
+    <string name="err_unsupported_language">Selected language code (%1$s) is not supported.</string>
+    <string name="err_ocr_failed">OCR processing encountered an unexpected error: %1$s</string>
+    <string name="err_empty_ocr_result">No readable text was detected in the image. Try retaking with clearer lighting.</string>
+    <string name="err_clipboard_failed">Unable to copy text to the Android clipboard.</string>
+    <string name="err_insufficient_storage">Insufficient local storage to save temporary image or OCR language data.</string>
+</resources>

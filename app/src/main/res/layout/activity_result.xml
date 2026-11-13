@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white"
+    android:padding="@dimen/spacing_md">
+
+    <TextView
+        android:id="@+id/tvResultTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/result_title"
+        android:textColor="@color/text_primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvConfidenceMeta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvResultTitle" />
+
+    <EditText
+        android:id="@+id/etExtractedText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginBottom="@dimen/spacing_md"
+        android:background="@color/surface_gray"
+        android:gravity="top|start"
+        android:hint="@string/result_hint"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine|textCapSentences"
+        android:lineSpacingExtra="5dp"
+        android:padding="@dimen/spacing_md"
+        android:scrollbars="vertical"
+        android:textAlignment="viewStart"
+        android:textColor="@color/text_primary"
+        android:textDirection="anyRtl"
+        android:textIsSelectable="true"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/resultActionRow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvConfidenceMeta" />
+
+    <LinearLayout
+        android:id="@+id/resultActionRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_sm"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/btnScanAnother"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCopyAll"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginEnd="@dimen/spacing_xs"
+            android:layout_weight="1"
+            android:text="@string/btn_copy_all"
+            android:textAllCaps="false"
+            android:textColor="@color/background_white"
+            app:backgroundTint="@color/primary_blue"
+            app:cornerRadius="@dimen/button_corner_radius" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnShareText"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginStart="@dimen/spacing_xs"
+            android:layout_weight="1"
+            android:text="@string/btn_share"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_blue"
+            app:cornerRadius="@dimen/button_corner_radius"
+            app:strokeColor="@color/primary_blue" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnScanAnother"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_scan_another"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
